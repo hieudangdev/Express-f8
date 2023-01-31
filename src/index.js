@@ -18,8 +18,8 @@ app.use(morgan('combined'))
 
 
 
-app.engine('handlebars', engine())
-app.set('view engine', 'handlebars')
+app.engine('hbs', engine({ extname: '.hbs' }))
+app.set('view engine', 'hbs')
 
 app.set('views', path.join(__dirname, 'resources/Views'))
 console.log(path.join(__dirname, 'resources/Views'))
@@ -27,6 +27,9 @@ console.log(path.join(__dirname, 'resources/Views'))
 // Routes
 app.get('/', function (req, res) {
     res.render('home')
+})
+app.get('/info', function (req, res) {
+    res.render('info')
 })
 
 app.listen(port, () => {
