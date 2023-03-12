@@ -1,12 +1,12 @@
 const express = require('express')
-const siteController = require('../app/controllers/SiteController')
+const siteController = require('../app/controllers/siteCtrl')
 
 const router = express.Router()
 
-router.use('/login', siteController.login)
-router.use('/value', siteController.value)
-router.use('/search', siteController.search)
-router.use('/', siteController.home)
+router.get('/login', siteController.login)
+router.post('/value', siteController.value)
+router.get('/search', siteController.search)
+router.get('/', siteController.home)
 
 
 

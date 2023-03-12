@@ -3,8 +3,13 @@ var path = require('path')
 var express = require('express')
 const morgan = require('morgan')
 const { engine } = require('express-handlebars')
-
+const methodOverride = require('method-override')
 const route = require('./routes')
+const db = require('./config/db')
+
+
+// connect mongodb
+db.connect()
 
 
 var app = express()
@@ -18,20 +23,24 @@ app.use(express.urlencoded({ extended: true }))
 // parse request from browser 
 app.use(express.json())
 
+// override method 
+app.use(methodOverride('_method'))
+
 //morgan
 // app.use(morgan('combined'))
 
-app.engine('hbs', engine({ extname: '.hbs' }))
+app.engine('hbs', 
+engine({ extname: '.hbs',
+      helpers:{
+        sum:(a,b)=> a + b
+      }      
+}))
 app.set('view engine', 'hbs')
 
-app.set('views', path.join(__dirname, 'resources/Views'))
-
+app.set("views", path.join(__dirname, 'resources', 'Views'))
 
 // Route
 route(app)
-
-
-
 app.listen(port, () => {
     return `App running ${port}`
 })

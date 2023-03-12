@@ -1,10 +1,9 @@
 const express = require('express')
-const infoController = require('../app/controllers/InfoController')
+const infoController = require('../app/controllers/InfoCtrl')
 
 const router = express.Router()
 
-router.use('/:slug', infoController.show)
-router.use('/', infoController.index)
+router.get('/', infoController.index)
 
 
 

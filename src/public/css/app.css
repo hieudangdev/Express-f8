@@ -3,3 +3,12 @@ h2 {
 
 h4 {
   color: red; }
+
+.user_avatar {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%; }
+
+.img_table {
+  height: 50px;
+  width: 50px; }

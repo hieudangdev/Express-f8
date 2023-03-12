@@ -8,14 +8,6 @@
       "watch": "node-sass --watch src/resources/scss/ --output src/public/css/",
       "test": "echo \"Error: no test specified\" && exit 1"
    },
-   "lint-staged" :{
-      "src/**/*.{js,json,scss}" : "prettier --single-quote --trailing-comma all --tab-width 4"
-   },
-   "husky": {
-      "hook": {
-         "pre-commit" :"lint-staged"
-      }
-   },
    "repository": {
       "type": "git",
       "url": "git+https://github.com/Captaitndev/Express-f8.git"
@@ -31,11 +23,12 @@
    "homepage": "https://github.com/Captaitndev/Express-f8#readme",
    "dependencies": {
       "express": "^4.18.2",
-      "express-handlebars": "^6.0.6"
+      "express-handlebars": "^6.0.6",
+      "method-override": "^3.0.0",
+      "mongoose": "^6.9.1",
+      "mongoose-slug-generator": "^1.0.4"
    },
    "devDependencies": {
-      "husky": "^8.0.3",
-      "lint-staged": "^13.1.0",
       "morgan": "^1.10.0",
       "node-sass": "^8.0.0",
       "nodemon": "^2.0.20",
