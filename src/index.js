@@ -27,7 +27,7 @@ app.use(express.json())
 app.use(methodOverride('_method'))
 
 //morgan
-// app.use(morgan('combined'))
+app.use(morgan('combined'))
 
 app.engine('hbs', 
 engine({ extname: '.hbs',

@@ -15,5 +15,13 @@
    "singleQuote": true,
    "trailingComma": "all",
    "useTabs": false,
-   "vueIndentScriptAndStyle": false
+   "vueIndentScriptAndStyle": false,
+   "overrides": [
+      {
+        "files": "*.hbs",
+        "options": {
+          "singleQuote": false
+        }
+      }
+    ]
 }

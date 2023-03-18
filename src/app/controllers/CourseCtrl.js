@@ -16,13 +16,11 @@ class CourseCtrl {
     }
 
     // [POST] courses/store
-    store(req, res, next) {
-        const FormData = req.body
-        
-        FormData.img = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`
-        const course = new CourseModal(FormData)
+    store(req, res, next) {        
+        req.body.img = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`
+        const course = new CourseModal(req.body)
         course.save()
-            .then(() => res.redirect('/'))   //trở về trang chủ 
+            .then(() => res.redirect('/me/stored/courses'))   //trở về trang chủ 
             .catch(err => { next() })
     }
     //[GET] courses/edit/:id
@@ -33,6 +31,14 @@ class CourseCtrl {
         })
         .catch(next)
     }
+    replica(req,res,next) {
+        CourseModal.findById(req.params.id)
+        .then(course => {
+            res.render('courses/replica',{course:MongoosetoObject(course)})
+        })
+        .catch(next)
+    }
+    
 
     // [PUT] courses/:id
     update(req,res,next){
@@ -42,8 +48,19 @@ class CourseCtrl {
     }
 
     // [DELETE] courses/del/:id
-    delete(req,res,next) {
+    detroy(req,res,next) {
+        CourseModal.delete({_id: req.params.id})
+            .then(()=> res.redirect('back'))
+            .catch(next)
+    }
+    force(req,res,next) {
         CourseModal.deleteOne({_id: req.params.id})
+            .then(()=> res.redirect('back'))
+            .catch(next)
+    }
+    // [restore] courses/restore/:id
+    restore(req,res,next) {
+        CourseModal.restore({_id: req.params.id})
             .then(()=> res.redirect('back'))
             .catch(next)
     }

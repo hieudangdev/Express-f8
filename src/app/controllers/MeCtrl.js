@@ -5,14 +5,24 @@ const CourseModal = require('../modals/Courses')
 class MeCtrl {
     // [GET] /stored/courses
     storedCourses(req, res, next) {
-        CourseModal.find({})
-            .then(courses => {
-                res.render('me/stored-courses' , {courses: mutipleMongoosetoObject(courses)})
+        Promise.all([CourseModal.find({}),CourseModal.countDocumentsDeleted({})])
+            .then(([courses,deletedCount])=> {
+                res.render('me/stored-courses' , {
+                    deletedCount,
+                    courses: mutipleMongoosetoObject(courses)})
+                
             })
-            .catch(
-                next
-            )
+
+    }
     
+    trashCourses(req,res,next){
+        Promise.all([CourseModal.findDeleted({}),CourseModal.count({})])
+            .then(([courses,coursesCount]) => {
+                res.render('me/trash-courses',{
+                    coursesCount,
+                    courses : mutipleMongoosetoObject(courses)})
+            })
+            .catch(next)
     }
 }
 module.exports = new MeCtrl
