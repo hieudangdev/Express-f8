@@ -4,6 +4,7 @@ const CourseCtrl = require('../app/controllers/CourseCtrl')
 const router = express.Router()
 
 router.get('/create', CourseCtrl.create)
+router.post('/handle-form', CourseCtrl.handleform)
 router.get('/edit/:id', CourseCtrl.edit)
 router.patch('/restore/:id', CourseCtrl.restore)
 router.get('/replica/:id', CourseCtrl.replica)

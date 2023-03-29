@@ -4,21 +4,18 @@ const mongoose_delete = require('mongoose-delete');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const Schema = mongoose.Schema
-const Course = new Schema({
+const User = new Schema({
     name: String,
-    description: String,
-    author: String,
-    img: String,
-    videoId: String,
+    email: String,
+    password: String,
     slug: { type: String, slug: 'name', unique: true }
-}, {_id:false, timestamps: true })
+}, { timestamps: true })
 
 mongoose.plugin(slug)
-Course.plugin(AutoIncrement)
-Course.plugin( mongoose_delete,{
+User.plugin( mongoose_delete,{
     deletedAt: true,
     overrideMethods: 'all',
 })
 
 
-module.exports = mongoose.model('Courses', Course)
+module.exports = mongoose.model('User', User)

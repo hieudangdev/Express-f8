@@ -22,10 +22,9 @@
          <tr>
             <th> <input type="checkbox" class="form-check-input" id="checkbox-all" /></th>
             <th scope="col">STT</th>
-            <th scope="col">Thumbnail</th>
-            <th scope="col">Tên khoá học {{{sortable 'name' _sort}}} </th>
-            <th scope="col">Tác giả    {{{sortable 'author' _sort}}}   </th>
-            <th scope="col">VideoId     {{{sortable 'videoid' _sort}}}  </th>
+            <th scope="col">username{{{sortable 'name' _sort}}} </th>
+            <th scope="col">Email   {{{sortable 'author' _sort}}}   </th>
+            <th scope="col">Password     {{{sortable 'videoid' _sort}}}  </th>
             <th scope="col">Time Created {{{sortable 'createdAt' _sort}}} </th>
             <th scope="col"></th>
          </tr>
@@ -35,10 +34,9 @@
             <tr>
                <th> <input type="checkbox" class="form-check-input checkcourse" name="coursesId[]" value="{{this._id}}" /></th>
                <th scope="row">{{sum @index 1}}</th>
-               <td><img class="imgTable" width="70" src="{{this.img}}" alt="{{this.name}}" /></td>
                <td>{{this.name}}</td>
-               <td>{{this.author}}</td>
-               <td>{{this.videoId}}</td>
+               <td>{{this.email}}</td>
+               <td>{{this.password}}</td>
                <td>{{this.createdAt}}</td>
                <td>
                   <a href="/courses/edit/{{this._id}}" class="btn">✏️</a>

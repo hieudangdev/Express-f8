@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.get('/stored/courses', MeCtrl.storedCourses)
 router.get('/trash/courses', MeCtrl.trashCourses)
+router.get('/stored/user', MeCtrl.storedUser)
 
 
 

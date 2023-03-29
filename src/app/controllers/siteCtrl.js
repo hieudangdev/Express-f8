@@ -15,7 +15,7 @@ class SiteController {
         res.render('search')
     }
     login(req, res) {
-        res.render('login')
+        res.render('/user/login')
     }
     value(req, res) {
         res.send(req.body)
