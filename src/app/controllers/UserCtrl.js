@@ -1,5 +1,5 @@
 
-const { MongoosetoObject } = require('../../util/mongoose')
+const { MongoosetoObject, mutipleMongoosetoObject } = require('../../util/mongoose')
 const UserModal = require('../modals/User')
 
 class UserCtrl {
@@ -7,18 +7,33 @@ class UserCtrl {
     login(req,res,next) {
         res.render('user/login')
     }
-    logout(req,res,next){
-        res.render('user/logout')
+    signin(req,res,next){
+        res.render('user/signin')
     }
     
     // [POST]
-
     createUser(req,res,next) {
 
         const user = new UserModal(req.body)
         user.save()
-            .then(() => res.redirect('/me/stored/courses'))   //trở về trang chủ 
+            .then(() => res.redirect('/me/stored/user'))   //trở về trang chủ 
             .catch(err => { next() })
+
+    }
+
+    account(req,res,next) {
+         UserModal.findOne({name: req.body.name})
+            .then((user)=> {
+                if(user.password === req.body.password){
+                  res.render('me/account',{user: MongoosetoObject(user)})
+                }else{
+                    res.send('incorrect password!')
+                    res.redirect('back')
+                }
+
+            })
+            .catch(next)
+
 
     }
 

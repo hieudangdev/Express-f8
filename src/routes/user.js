@@ -4,9 +4,9 @@ const UserCtrl = require('../app/controllers/UserCtrl')
 const router = express.Router()
 
 router.get('/login', UserCtrl.login)
-router.get('/logout', UserCtrl.logout)
+router.get('/signin', UserCtrl.signin)
 router.post('/create', UserCtrl.createUser)
-router.get('/logout', UserCtrl.logout)
+router.post('/account', UserCtrl.account)
 
 
 

@@ -1,0 +1,59 @@
+
+<div class="m-4">
+   <h3>thông tin của bạn</h3>
+
+   <form class="mt-4" method="POST" action="/courses/{{user._id}}?_method=PUT">
+      <div class="row">
+
+         {{!-- <div class="col-lg-3 bg-secondary-subtle">
+
+            <img
+               class="bg-dark p-1 rounded"
+               width="300"
+               id="imgid"
+               src="https://img.y/maxresdefault.jpg"
+               alt="{{user.name}}"
+            />
+         </div> --}}
+         <div class="col-lg-9">
+            <div class="form-group">
+               <label for="name">
+                  tên đăng nhập
+               </label>
+               <input type="text" class="form-control" value="{{user.name}}" id="name" name="name" />
+            </div>
+            <div class="form-group">
+               <label for="author">
+                  Author
+               </label>
+               <input type="texts" name="author" class="form-control" value="{{user.email}}" id="author" />
+            </div>
+
+            <div class="form-group">
+               <label for="videoId">
+                  Video ID
+               </label>
+               <input type="text" class="form-control" value="{{user.password}}" id="videoId" name="videoId" />
+            </div>
+
+            <button type="submit" class="btn mt-4 btn-primary">
+               Lưu lại
+            </button>
+         </div>
+      </div>
+   </form>
+</div>
+
+
+<script>
+
+   const videoid = document.getElementById('videoId')
+   const imgid = document.getElementById('imgid')
+  videoid.onblur = function () {
+imgid.src =  "https://img.youtube.com/vi/"+videoid.value+"/maxresdefault.jpg"
+}
+
+</script>
+
+
+  
